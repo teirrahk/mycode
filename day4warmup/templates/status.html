@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLASK API ADVENTURE!</title>
+</head>
+<body>
+
+    <!-- Display the most recent message of what happened in game (msg) -->
+    <p><strong>{{ msg }}</strong></p>
+
+    <!-- Display the name of the current room (currentRoom) -->
+    <p>You are in the {{ currentRoom }}.</p>
+
+    {% if not gameover %}
+
+        <!-- Inventory list with a for-loop to show each item -->
+        <p>Inventory:</p>
+        <ul>
+            {% for item in inv %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if "item" in currentroomdict %}
+            <p>You see: {{ currentroomdict["item"] }}</p>
+        {% endif %}
+
+    <!-- Display the room's description (desc) -->
+   <p>{{ currentroomdict.desc }}</p>
+
+        <form action="/action" method="POST">
+            <p><input type="text" name="nm"></p>
+            <p><input type="submit" value="submit"></p>
+        </form>
+    {% endif %}
+
+</body>
+</html>
